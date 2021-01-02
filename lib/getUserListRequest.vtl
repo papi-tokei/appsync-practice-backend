@@ -1,0 +1,8 @@
+{
+    "version" : "2018-05-29",
+    "operation" : "GetItem",
+    "key" : {
+        "user_id" : $util.dynamodb.toDynamoDBJson($ctx.args.user_id)
+    },
+    "consistentRead" : false
+}

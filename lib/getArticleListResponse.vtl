@@ -1,0 +1,6 @@
+#set($myMap = {})
+$util.qr($myMap.put("articleList", $ctx.result.items))
+#if(!$util.isNull($ctx.result.nextToken))
+    $util.qr($myMap.put("nextToken", $ctx.result.nextToken))
+#end
+$util.toJson($myMap)

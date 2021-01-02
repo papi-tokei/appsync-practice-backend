@@ -1,0 +1,11 @@
+{
+    "version" : "2018-05-29",
+    "operation" : "PutItem",
+    "key": {
+        "article_id" : $util.dynamodb.toDynamoDBJson($ctx.args.input.article_id)
+    },
+    "attributeValues" : {
+        "article_name" : $util.dynamodb.toDynamoDBJson($ctx.args.input.article_name),
+        "publication_date" : $util.dynamodb.toDynamoDBJson($ctx.args.input.publication_date)
+    }
+}

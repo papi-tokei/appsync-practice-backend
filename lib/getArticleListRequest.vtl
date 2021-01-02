@@ -1,0 +1,9 @@
+{
+    "version" : "2018-05-29",
+    "operation" : "Scan",
+    "limit" : 2,
+    "consistentRead" : false,
+    #if(!$util.isNull($ctx.args.nextToken))
+        "nextToken": "$ctx.args.nextToken"
+    #end
+}

@@ -1,0 +1,52 @@
+type User {
+    user_id: ID!
+    user_name: String!
+    age: Int
+    gender: String
+}
+
+type Article {
+    article_id: String!
+    article_name: String!
+    publication_date: String
+}
+
+type ArticleList {
+    articleList: [Article] 
+    nextToken: String
+}
+
+input UserInput {
+    user_id: ID!
+    user_name: String!
+    age: Int!
+    gender: String!
+}
+
+input ArticleInput {
+    article_id: ID!
+    article_name: String!
+    publication_date: String!
+}
+
+type Mutation {
+    createUser(input: UserInput!): User
+    createArticle(input: ArticleInput): Article
+}
+
+type Query {
+    getUserData(user_id: ID!): User!
+    getUserList: [User]
+    getArticleList(nextToken: String): ArticleList
+}
+
+type Subscription {
+    onCreateUser: User 
+        @aws_subscribe(mutations: ["createUser"])
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
